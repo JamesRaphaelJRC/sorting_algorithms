@@ -9,12 +9,16 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j;
-	int min, min_index, tmp;
+	size_t i, j, min_index;
+	int min, tmp;
+
+	if (array == NULL || size < 2)
+		return;
 
 	for (i = 0; i < size; i++)
 	{
 		min = array[i];
+		min_index = i;
 		j = i + 1;
 
 		for (; j < size; j++)
@@ -25,10 +29,13 @@ void selection_sort(int *array, size_t size)
 				min_index = j;
 			}
 		}
-		tmp = array[i];
-		array[i] = min;
-		array[min_index] = tmp;
 
-		print_array(array, size);
+		if (min_index != i)
+		{
+			tmp = array[i];
+			array[i] = min;
+			array[min_index] = tmp;
+			print_array(array, size);
+		}
 	}
 }
