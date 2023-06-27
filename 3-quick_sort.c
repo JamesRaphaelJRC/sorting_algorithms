@@ -16,7 +16,7 @@ void swap(int *a, int *b)
 
 
 /**
- * lumoto_partition - Implements the lumoto partitioning on an array.
+ * lomuto_partition - Implements the lomuto partitioning on an array.
  * @array: The array to be worked on.
  * @lb: The lower boundary of the array.
  * @ub: The upper boundary of the array.
@@ -24,8 +24,7 @@ void swap(int *a, int *b)
  *
  * Return: The index of the pivot.
  */
-
-int lumoto_partition(int *array, int lb, int ub, size_t size)
+int lomuto_partition(int *array, int lb, int ub, size_t size)
 {
 	int pivot = array[ub], i = lb - 1, j;
 
@@ -59,7 +58,7 @@ void quick_sort_helper(int *array, int lb, int ub, size_t size)
 
 	if (lb < ub)
 	{
-		pivot_index = lumoto_partition(array, lb, ub, size);
+		pivot_index = lomuto_partition(array, lb, ub, size);
 		quick_sort_helper(array, lb, pivot_index - 1, size);
 		quick_sort_helper(array, pivot_index + 1, ub, size);
 	}
@@ -74,5 +73,8 @@ void quick_sort_helper(int *array, int lb, int ub, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
+
 	quick_sort_helper(array, 0, size - 1, size);
 }
