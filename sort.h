@@ -2,6 +2,7 @@
 #define __SORT_H__
 
 #include <stdlib.h>
+#include <stdio.h>
 
 
 /**
@@ -27,5 +28,9 @@ void quick_sort(int *array, size_t size);
 void swap(int *a, int *b);
 int lomuto_partition(int *array, int lb, int ub, size_t size);
 void quick_sort_helper(int *array, int lb, int ub, size_t size);
+void merge_sort(int *array, size_t size);
+void merge_sort_helper(int *array, int *tmp_array, int lb, int ub);
+void top_down_merge_sort(int *array, int *tmp_array, int lb, int mid, int ub);
+
 
 #endif
